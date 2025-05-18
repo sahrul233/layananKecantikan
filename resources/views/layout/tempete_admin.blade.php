@@ -76,24 +76,21 @@
             <ul class="nav nav-secondary">
               <li class="nav-item active">
                 <a
-                  data-bs-toggle="collapse"
-                  href="#dashboard"
+                  href="/admin_dashboard"
                   class="collapsed"
-                  aria-expanded="false"
                 >
                   <i class="fas fa-home"></i>
                   <p>Dashboard</p>
-                  <span class="caret"></span>
                 </a>
-                <div class="collapse" id="dashboard">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="../demo1/index.html">
-                        <span class="sub-item">Dashboard 1</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+              </li>
+              <li class="nav-item active">
+                <a
+                  href="/login_admin"
+                  class="collapsed"
+                >
+                  <i class="fas fa-home"></i>
+                  <p>login</p>
+                </a>
               </li>
               <li class="nav-section">
                 <span class="sidebar-mini-icon">
@@ -102,12 +99,11 @@
                 <h4 class="text-section">Components</h4>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/reservasi">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-              <span class="menu-title">Reservasi</span>
-            </a>
+                <a
+                  href="/reservasi" class="collapsed">
+                  <i class="fas fa-th-list"></i>
+                  <p>Reservasi</p>
+                </a>
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarLayouts">
