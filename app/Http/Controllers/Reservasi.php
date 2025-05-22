@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class reservasi extends Controller
+class Reservasi extends Controller
 {
     public function index()
     {
