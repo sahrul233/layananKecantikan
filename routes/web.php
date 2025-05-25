@@ -13,6 +13,7 @@ use App\Http\Controllers\JadwalPelangganController;
 use App\Http\Controllers\JadwalAdminController;
 use App\Http\Controllers\DataKaryawanController;
 use App\Http\Controllers\DataPelangganController;
+use App\Http\Controllers\DataProdukController;
 use App\Http\Controllers\RatingUlasanController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,13 @@ Route::post('/data_pelanggan/tambah', [DataPelangganController::class, 'action_t
 
 Route::get('/data_pelanggan/{id}/edit', [DataPelangganController::class, 'edit'])->name('data_pelanggan.edit');
 Route::post('/data_pelanggan/{id}/edit', [DataPelangganController::class, 'action_edit'])->name('data_pelanggan.update');
+
+Route::get('/data_produk', [DataProdukController::class, 'index'])->name('data_produk.index');
+Route::get('/data_produk/tambah', [DataProdukController::class, 'tambah'])->name('data_produk.tambah');
+Route::post('/data_produk/tambah', [DataProdukController::class, 'action_tambah'])->name('data_produk.store');
+
+Route::get('/data_produk/{id}/edit', [DataProdukController::class, 'edit'])->name('data_produk.edit');
+Route::post('/data_produk/{id}/edit', [DataProdukController::class, 'action_edit'])->name('data_produk.update');
 
 Route::get('/layanan', [LayananController::class, 'index'])->name('layanan.index');
 

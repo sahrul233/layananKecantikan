@@ -89,7 +89,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/login_admin" class="collapsed">
+                            <a href="/data_produk" class="collapsed">
                                 <i class="fas fa-user"></i>
                                 <p>Data Produk</p>
                             </a>
