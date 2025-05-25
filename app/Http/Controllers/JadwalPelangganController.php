@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\LayananModel;
+use App\Models\JadwalPelangganModel;
 
-class LayananController extends Controller
+class JadwalPelangganController extends Controller
 {
     public function index()
     {
@@ -13,6 +13,6 @@ class LayananController extends Controller
             'no' => 1,
         ];
 
-        return view('layanan', $data);
+        return view('jadwal_pelanggan', $data);
     }
 }

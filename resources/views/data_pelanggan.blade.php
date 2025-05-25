@@ -1,10 +1,17 @@
-@extends('layout.tempete_admin')
+@extends('layout.template_admin')
 @section('content')
     <div class="cand">
         <div class="card-header">
-            <h4>Data Reservasi</h4>
+            <h4 class="judul-jadwal">Data Pelanggan</h4>
+        <style>
+            .judul-jadwal {
+                text-align: center;
+                font-weight: bold;
+                margin-bottom: 20px;
+                }
+        </style>
             <div class="col mt-3">
-                <a href="/reservasi/tambah" class="btn btn-primary">Tambah Data</a>
+                <a href="/data_pelanggan/tambah" class="btn btn-primary">Tambah Data</a>
             </div>
         </div>
         <div class="card-body">
@@ -13,22 +20,18 @@
                     <thead class="table-light">
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">NAMA LENGKAP</th>
-                            <th scope="col">Alamat</th>
+                            <th scope="col">Nama Lengkap</th>
+                            <th scope="col">Nomor HP</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Nomer Telfon</th>
-                            <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Umur</th>
-                            <th scope="col">Pilihan Tempat</th>
-                            <th scope="col">Kategori Layanan</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Tempat</th>
+                            <th scope="col">Layanan</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                             <tr>
-                                <th> </th>
-                                <td> </td>
-                                <td> </td>
+                                <th ></th>
                                 <td> </td>
                                 <td> </td>
                                 <td> </td>
@@ -36,8 +39,8 @@
                                 <td> </td>
                                 <td> </td>
                                 <td>
-                                    <a href="/reservasi/edit" class="btn btn-primary btn-sm">Edit</a>
-                                    <a href="/reservasi/hapus" class="btn btn-danger btn-sm">Hapus</a>
+                                    <a href="/data_pelanggan/edit" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="/data_pelanggan/hapus" class="btn btn-danger btn-sm">Hapus</a>
                                 </td>
                             </tr>
                     </tbody>

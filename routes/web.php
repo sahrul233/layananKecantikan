@@ -7,9 +7,14 @@ use App\Http\Controllers\DashboardPelangganController;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\JadwalPelangganController;
+use App\Http\Controllers\JadwalAdminController;
+use App\Http\Controllers\DataKaryawanController;
+use App\Http\Controllers\DataPelangganController;
+use App\Http\Controllers\RatingUlasanController;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Reservasi;
 
 // Dashboard
 Route::get('/dashboard_owner', [DashboardOwnerController::class, 'index'])->name('dashboard_owner');
@@ -24,13 +29,37 @@ Route::get('/login_admin', [LoginController::class, 'index'])->name('login');
 Route::post('/login_admin', [LoginController::class, 'login_proses']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/data_karyawan', [DataKaryawanController::class, 'index'])->name('data_karyawan.index');
+Route::get('/data_karyawan/tambah', [DataKaryawanController::class, 'tambah'])->name('data_karyawan.tambah');
+Route::post('/data_karyawan/tambah', [DataKaryawanController::class, 'action_tambah'])->name('data_karyawan.store');
 
+Route::get('/data_karyawan/{id}/edit', [DataKaryawanController::class, 'edit'])->name('data_karyawan.edit');
+Route::post('/data_karyawan/{id}/edit', [DataKaryawanController::class, 'action_edit'])->name('data_karyawan.update');
 
+Route::get('/data_pelanggan', [DataPelangganController::class, 'index'])->name('data_pelanggan.index');
+Route::get('/data_pelanggan/tambah', [DataPelangganController::class, 'tambah'])->name('data_pelanggan.tambah');
+Route::post('/data_pelanggan/tambah', [DataPelangganController::class, 'action_tambah'])->name('data_pelanggan.store');
 
-// Reservasi (butuh login)
-Route::get('/reservasi', [Reservasi::class, 'index'])->middleware('auth');
+Route::get('/data_pelanggan/{id}/edit', [DataPelangganController::class, 'edit'])->name('data_pelanggan.edit');
+Route::post('/data_pelanggan/{id}/edit', [DataPelangganController::class, 'action_edit'])->name('data_pelanggan.update');
 
+Route::get('/layanan', [LayananController::class, 'index'])->name('layanan.index');
 
-Auth::routes();
+Route::get('/jadwal_pelanggan', [JadwalPelangganController::class, 'index'])->name('jadwal_pelanggan.index');
+Route::get('/jadwal_admin', [JadwalAdminController::class, 'index'])->name('jadwal_admin.index');
+
+Route::get('/users', [UsersController::class, 'index'])->name('users.index');
+Route::get('/users/tambah', [UsersController::class, 'tambah'])->name('users.tambah');
+Route::post('/users/tambah', [UsersController::class, 'action_tambah'])->name('users.store');
+
+Route::get('/users/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
+Route::post('/users/{id}/edit', [UsersController::class, 'action_edit'])->name('users.update');
+
+Route::get('/rating_ulasan', [RatingUlasanController::class, 'index'])->name('rating_ulasan.index');
+Route::get('/rating_ulasan/tambah', [RatingUlasanController::class, 'tambah'])->name('rating_ulasan.tambah');
+Route::post('/rating_ulasan/tambah', [RatingUlasanController::class, 'action_tambah'])->name('rating_ulasan.store');
+
+Route::get('/rating_ulasan/{id}/edit', [RatingUlasanController::class, 'edit'])->name('rating_ulasan.edit');
+Route::post('/rating_ulasan/{id}/edit', [RatingUlasanController::class, 'action_edit'])->name('rating_ulasan.update');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
