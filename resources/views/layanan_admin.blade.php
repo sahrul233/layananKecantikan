@@ -1,8 +1,11 @@
-@extends('layout.template_pelanggan')
+@extends('layout.template_admin')
 @section('content')
 <div class="cand">
     <div class="card-header text-center mt-4">
-        <h4 class="judul-jadwal">Layanan</h4>
+        <h4 class="judul-jadwal">Daftar Layanan</h4>
+    </div>
+    <div class="col mt-3">
+        <a href="/layanan_admin/tambah" class="btn btn-primary">Tambah Layanan</a>
     </div>
     <div class="container">
         <style>
@@ -104,49 +107,44 @@
 
         <div class="layanan-grid">
             <div class="layanan-card">
-                <h2>Layanan A</h2>
+                <img src="{{ asset('storage/haircare.jpg') }}" alt="Hair Care" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
                 <p>Hair Care</p>
+                <p>Deskripsi</p>
                 <p>Rp 100.000</p>
                 <button class="btn btn-primary">Pesan</button>
             </div>
             <div class="layanan-card">
-                <h2>Layanan B</h2>
+                <img src="{{ asset('storage/facialcare.jpg') }}" alt="Facial Care" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
                 <p>Facial Care</p>
+                <p>Deskripsi</p>
                 <p>Rp 120.000</p>
                 <button class="btn btn-primary">Pesan</button>
             </div>
             <div class="layanan-card">
-                <h2>Layanan C</h2>
+                <img src="{{ asset('storage//nailcare.jpg') }}" alt="Nail Care" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
                 <p>Nail Care</p>
+                <p>Deskripsi</p>
                 <p>Rp 80.000</p>
                 <button class="btn btn-primary">Pesan</button>
             </div>
             <div class="layanan-card">
-                <h2>Layanan D</h2>
+                <img src="{{ asset('storage/makeup.jpg') }}" alt="Makeup" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
                 <p>Makeup</p>
+                <p>Deskripsi</p>
                 <p>Rp 150.000</p>
                 <button class="btn btn-primary">Pesan</button>
             </div>
             <div class="layanan-card">
-                <h2>Layanan E</h2>
+                <img src="{{ asset('storage/bodytreatment.jpg') }}" alt="Body Treatment" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
                 <p>Body Treatment</p>
+                <p>Deskripsi</p>
                 <p>Rp 180.000</p>
                 <button class="btn btn-primary">Pesan</button>
             </div>
         </div>
-
-        <div class="mb-3">
-            <label for="pilihan_tempat" class="form-label">Pilih Tempat</label>
-            <select class="form-select" id="pilihan_tempat" name="pilihan_tempat" required>
-                <option selected disabled>Pilihan Tempat</option>
-                <option value="salon">Salon</option>
-                <option value="rumah">Rumah</option>
-            </select>
-        </div>
-
         <div class="card-footer">
             <button class="btn btn-primary" type="submit">Simpan</button>
-            <a href="/dashboard_pelanggan" class="btn btn-danger">Kembali</a>
+            <a href="/layanan_admin" class="btn btn-danger">Kembali</a>
         </div>
     </div>
 </div>

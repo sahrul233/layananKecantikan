@@ -13,6 +13,6 @@ class LayananController extends Controller
             'no' => 1,
         ];
 
-        return view('layanan', $data);
+        return view('layanan_pelanggan', $data);
     }
 }

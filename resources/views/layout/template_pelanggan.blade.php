@@ -75,7 +75,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/layanan" class="collapsed">
+                            <a href="/layanan_pelanggan" class="collapsed">
                                 <i class="fas fa-home"></i>
                                 <p>Data Layanan Kecantikan</p>
                             </a>
@@ -89,70 +89,25 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/" class="collapsed">
+                            <a href="/pembayaran_pelanggan" class="collapsed">
                                 <i class="fas fa-wallet"></i>
-                                <p>Data Transaksi</p>
+                                <p>Pembayaran</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="/" class="collapsed">
+                            <a href="/riwayatpembayaran_pelanggan" class="collapsed">
+                                <i class="fas fa-wallet"></i>
+                                <p>Riwayat Pembayaran</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/rating_pelanggan" class="collapsed">
                                 <i class="fas fa-star"></i>
-                                <p>Data Rating & Ulasan</p>
+                                <p>Rating & Ulasan</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#submenu">
-                                <i class="fas fa-bars"></i>
-                                <p>Menu Levels</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="submenu">
-                                <ul class="nav nav-collapse">
-                                    <li>
-                                        <a data-bs-toggle="collapse" href="#subnav1">
-                                            <span class="sub-item">Level 1</span>
-                                            <span class="caret"></span>
-                                        </a>
-                                        <div class="collapse" id="subnav1">
-                                            <ul class="nav nav-collapse subnav">
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="sub-item">Level 2</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="sub-item">Level 2</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a data-bs-toggle="collapse" href="#subnav2">
-                                            <span class="sub-item">Level 1</span>
-                                            <span class="caret"></span>
-                                        </a>
-                                        <div class="collapse" id="subnav2">
-                                            <ul class="nav nav-collapse subnav">
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="sub-item">Level 2</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sub-item">Level 1</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
                     </ul>
                 </div>
             </div>

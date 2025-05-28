@@ -75,9 +75,9 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/" class="collapsed">
+                            <a href="/pelanggan_karyawan" class="collapsed">
                                 <i class="fas fa-users"></i>
-                                <p>Data Pelanggan</p>
+                                <p>Pelanggan</p>
                             </a>
                         </li>
 

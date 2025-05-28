@@ -1,7 +1,7 @@
 @extends('layout.template_admin')
 
 @section('content')
-<form class="card" action="/data_pelanggan/edit" method="POST">
+<form class="card" action="/rating_ulasan/edit" method="POST">
     @csrf
     <div class="card-header">
         <h4 class="judul-jadwal">Edit Rating Dan Ulasan</h4>

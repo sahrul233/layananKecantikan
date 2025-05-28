@@ -1,25 +1,66 @@
-@extends('layout.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2 class="text-center mb-4">Login</h2>
 
-@section('title', 'Login')
+        <!-- Menampilkan pesan error jika ada -->
+        @if (session('failed'))
+            <div class="alert alert-danger">
+                {{ session('failed') }}
+            </div>
+        @endif
 
-@section('content')
-<div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
-    <h2 class="text-center mb-4">Masuk ke Akun Anda</h2>
-    <form action="" method="POST" class="space-y-4">
-        @csrf
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" >
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" name="password" class="form-control">
-        </div>
-        <button href="/admin_dashboard" type="submit" class="btn btn-primary w-100">Masuk</button>
-    </form>
-    <p class="mt-6 text-center">
-        Belum punya akun?
-        <a href="/registrasi_admin" class="text-pink-500 hover:underline">Daftar di sini</a>
-    </p>
-</div>
-@endsection
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autofocus>
+                @error('email')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" required>
+                @error('password')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select class="form-control" id="role" name="role" required>
+                    <option value="" disabled selected>Pilih role</option>
+                    <option value="admin">Admin</option>
+                    <option value="karyawan">Karyawan</option>
+                    <option value="owner">Owner</option>
+                </select>
+           </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reservasi extends Model
+class RiwayatPembayaranPelangganModel extends Model
 {
-    protected $table = 'reservasi';
-
+    
 }
