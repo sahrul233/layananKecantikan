@@ -27,11 +27,8 @@
     <div class="login-form">
         <h2 class="text-center mb-4">Login</h2>
 
-        <!-- Menampilkan pesan error jika ada -->
-        @if (session('failed'))
-            <div class="alert alert-danger">
-                {{ session('failed') }}
-            </div>
+        @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
         <form method="POST" action="{{ route('login') }}">
@@ -39,22 +36,17 @@
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autofocus>
-                @error('email')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                @error('email')<span class="invalid-feedback">{{ $message }}</span>@enderror
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" required>
-                @error('password')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                @error('password')<span class="invalid-feedback">{{ $message }}</span>@enderror
             </div>
-            <button href="/dashboard_pelanggan" button type="submit" class="btn btn-primary w-100">Login</button>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
 
-        <!-- Link untuk Register -->
-        <div class="mt-6 text-center">
+        <div class="mt-4 text-center">
             <p>Belum punya akun? <a href="{{ route('register') }}">Daftar Sekarang</a></p>
         </div>
     </div>

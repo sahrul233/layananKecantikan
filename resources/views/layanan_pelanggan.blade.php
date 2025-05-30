@@ -103,52 +103,18 @@
         </style>
 
         <div class="layanan-grid">
-            <div class="layanan-card">
-                <img src="{{ asset('storage/haircare.jpg') }}" alt="Hair Care" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
-                <p>Hair Care</p>
-                <p>Rp 100.000</p>
-                <button class="btn btn-primary">Pesan</button>
-            </div>
-            <div class="layanan-card">
-                <img src="{{ asset('storage/facialcare.jpg') }}" alt="Facial Care" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
-                <p>Facial Care</p>
-                <p>Rp 120.000</p>
-                <button class="btn btn-primary">Pesan</button>
-            </div>
-            <div class="layanan-card">
-                <img src="{{ asset('storage//nailcare.jpg') }}" alt="Nail Care" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
-                <p>Nail Care</p>
-                <p>Rp 80.000</p>
-                <button class="btn btn-primary">Pesan</button>
-            </div>
-            <div class="layanan-card">
-                <img src="{{ asset('storage/makeup.jpg') }}" alt="Makeup" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
-                <p>Makeup</p>
-                <p>Rp 150.000</p>
-                <button class="btn btn-primary">Pesan</button>
-            </div>
-            <div class="layanan-card">
-                <img src="{{ asset('storage/bodytreatment.jpg') }}" alt="Body Treatment" style="width:100%; border-radius: 12px; margin-bottom: 12px;">
-                <p>Body Treatment</p>
-                <p>Rp 180.000</p>
-                <button class="btn btn-primary">Pesan</button>
-            </div>
+    @foreach ($layanan as $item)
+        <div class="layanan-card">
+            @if ($item->gambar)
+                <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}" style="width:100%;">
+            @else
+                <img src="{{ asset('default-image.jpg') }}" alt="Default" style="width:100%;">
+            @endif
+            <h3>{{ $item->nama }}</h3>
+            <p>{{ $item->deskripsi }}</p>
+            <p>Rp {{ number_format($item->harga, 0, ',', '.') }}</p>
         </div>
-
-
-        <div class="mb-3">
-            <label for="pilihan_tempat" class="form-label">Pilih Tempat</label>
-            <select class="form-select" id="pilihan_tempat" name="pilihan_tempat" required>
-                <option selected disabled>Pilihan Tempat</option>
-                <option value="salon">Salon</option>
-                <option value="rumah">Rumah</option>
-            </select>
-        </div>
-
-        <div class="card-footer">
-            <button class="btn btn-primary" type="submit">Simpan</button>
-            <a href="/dashboard_pelanggan" class="btn btn-danger">Kembali</a>
-        </div>
-    </div>
+    @endforeach
 </div>
+
 @endsection

@@ -6,20 +6,24 @@ use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardKaryawanController;
 use App\Http\Controllers\DashboardPelangganController;
 
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Auth\LoginAdminController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\LayananController;
+
 use App\Http\Controllers\JadwalPelangganController;
 use App\Http\Controllers\JadwalAdminController;
-use App\Http\Controllers\DataKaryawanController;
-use App\Http\Controllers\DataPelangganController;
-use App\Http\Controllers\DataProdukController;
+
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\AdminPelangganController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\KaryawanController;
+
 use App\Http\Controllers\RatingUlasanController;
 use App\Http\Controllers\RatingPelangganController;
 
 use App\Http\Controllers\KaryawanOwnerController;
+
 use App\Http\Controllers\PelangganOwnerController;
 use App\Http\Controllers\ProdukOwnerController;
 use App\Http\Controllers\JadwalOwnerController;
@@ -29,7 +33,8 @@ use App\Http\Controllers\PembayaranPelangganController;
 use App\Http\Controllers\PembayaranAdminController;
 use App\Http\Controllers\RiwayatPembayaranPelangganController;
 use App\Http\Controllers\PembayaranOwnerController;
-use App\Http\Controllers\LayananAdminController;
+use App\Http\Controllers\DataLayananController;
+use App\Http\Controllers\PelangganlayananController;
 use Illuminate\Support\Facades\Route;
 
 // Dashboard
@@ -46,32 +51,54 @@ Route::post('/register_admin', [RegisterController::class, 'store']);
 // Route::post('/login_admin', [LoginAdminController::class, 'login_proses'])->name('login.process');
 // Route::post('/logout_admin', [LoginAdminController::class, 'logout'])->name('logout');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'login_proses']);
+Route::get('/register', [LoginController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [LoginController::class, 'register']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/register', [RegisterController::class, 'create'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/data_karyawan', [DataKaryawanController::class, 'index'])->name('data_karyawan.index');
-Route::get('/data_karyawan/tambah', [DataKaryawanController::class, 'tambah'])->name('data_karyawan.tambah');
-Route::post('/data_karyawan/tambah', [DataKaryawanController::class, 'action_tambah'])->name('data_karyawan.store');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard_pelanggan', function () {
+        return view('dashboard_pelanggan');
+    });
+});
 
-Route::get('/data_karyawan/{id}/edit', [DataKaryawanController::class, 'edit'])->name('data_karyawan.edit');
-Route::post('/data_karyawan/{id}/edit', [DataKaryawanController::class, 'action_edit'])->name('data_karyawan.update');
+Route::get('/karyawan/data_karyawan', [KaryawanController::class, 'index']);
+Route::get('/karyawan/tambah', [KaryawanController::class, 'tambah']);
+Route::post('/karyawan/tambah', [KaryawanController::class, 'simpan']); // ← Tambahkan ini
+Route::get('/karyawan/edit/{id}', [KaryawanController::class, 'edit']);
+Route::post('/karyawan/update/{id}', [KaryawanController::class, 'update']);
+Route::delete('/karyawan/hapus/{id}', [KaryawanController::class, 'destroy']);
 
-Route::get('/data_pelanggan', [DataPelangganController::class, 'index'])->name('data_pelanggan.index');
-Route::get('/data_pelanggan/tambah', [DataPelangganController::class, 'tambah'])->name('data_pelanggan.tambah');
-Route::post('/data_pelanggan/tambah', [DataPelangganController::class, 'action_tambah'])->name('data_pelanggan.store');
+Route::get('/layanan_admin/data_layanan', [DataLayananController::class, 'index']);
+Route::get('/layanan_admin/tambah', [DataLayananController::class, 'tambah']);
+Route::post('/layanan_admin/tambah', [DataLayananController::class, 'simpan']); // ← Tambahkan ini
+Route::get('/layanan_admin/edit/{id}', [DataLayananController::class, 'edit']);
+Route::post('/layanan_admin/update/{id}', [DataLayananController::class, 'update']);
+Route::get('/layanan_admin/hapus/{id}', [DataLayananController::class, 'hapus']);
 
-Route::get('/data_pelanggan/{id}/edit', [DataPelangganController::class, 'edit'])->name('data_pelanggan.edit');
-Route::post('/data_pelanggan/{id}/edit', [DataPelangganController::class, 'action_edit'])->name('data_pelanggan.update');
 
-Route::get('/data_produk', [DataProdukController::class, 'index'])->name('data_produk.index');
-Route::get('/data_produk/tambah', [DataProdukController::class, 'tambah'])->name('data_produk.tambah');
-Route::post('/data_produk/tambah', [DataProdukController::class, 'action_tambah'])->name('data_produk.store');
+//Route::get('/layanan_pelanggan', [PelangganlayananController::class, 'index']);
+// Menampilkan layanan
+Route::get('/pelanggan_layanan', [PelangganlayananController::class, 'index'])->name('pelanggan.layanan');
+Route::post('/pelanggan_layanan/pesan/{id}', [PelangganlayananController::class, 'pesanLayanan'])->name('pelanggan.pesan');
+Route::get('/pelanggan_layanan/riwayat', [PelangganlayananController::class, 'riwayat'])->name('pelanggan.riwayat');
 
-Route::get('/data_produk/{id}/edit', [DataProdukController::class, 'edit'])->name('data_produk.edit');
-Route::post('/data_produk/{id}/edit', [DataProdukController::class, 'action_edit'])->name('data_produk.update');
+
+
+
+
+Route::get('/pelanggan/data_pelanggan', [PelangganController::class, 'index']);
+Route::get('/pelanggan/tambah', [PelangganController::class, 'tambah']);
+Route::post('/pelanggan/tambah', [PelangganController::class, 'simpan']); // ← Tambahkan ini
+Route::get('/pelanggan/edit/{id}', [PelangganController::class, 'edit']);
+Route::post('/pelanggan/update/{id}', [PelangganController::class, 'update']);
+Route::delete('/pelanggan/hapus/{id}', [PelangganController::class, 'destroy']);
+
+Route::get('/pelanggan/layanan', [LayananController::class, 'tampilkanLayanan']);
+
 
 Route::get('/layanan_pelanggan', [LayananController::class, 'index'])->name('layanan_pelanggan.index');
 
@@ -101,6 +128,8 @@ Route::post('/rating_pelanggan/tambah', [RatingPelangganController::class, 'acti
 
 Route::get('/rating_pelanggan/{id}/edit', [RatingPelangganController::class, 'edit'])->name('rating_pelanggan.edit');
 Route::post('/rating_pelanggan/{id}/edit', [RatingPelangganController::class, 'action_edit'])->name('rating_pelanggan.update');
+Route::get('/rating_pelanggan/{id}/hapus', [RatingPelangganController::class, 'hapus'])->name('rating_pelanggan.destroy');
+
 
 Route::get('/karyawan_owner', [KaryawanOwnerController::class, 'index'])->name('karyawan_owner.index');
 Route::get('/pelanggan_owner', [PelangganOwnerController::class, 'index'])->name('pelanggan_owner.index');
@@ -110,12 +139,6 @@ Route::get('/rating_owner', [RatingOwnerController::class, 'index'])->name('rati
 
 Route::get('/pelanggan_karyawan', [PelangganKaryawanController::class, 'index'])->name('pelanggan_karyawan.index');
 
-Route::get('/layanan_admin', [LayananAdminController::class, 'index'])->name('layanan_admin.index');
-Route::get('/layanan_admin/tambah', [LayananAdminController::class, 'tambah'])->name('layanan_admin.tambah');
-Route::post('/layanan_admin/tambah', [LayananAdminController::class, 'action_tambah'])->name('layanan_admin.store');
-
-Route::get('/layanan_admin/{id}/edit', [LayananAdminController::class, 'edit'])->name('layanan_admin.edit');
-Route::post('/layanan_admin/{id}/edit', [LayananAdminController::class, 'action_edit'])->name('layanan_admin.update');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

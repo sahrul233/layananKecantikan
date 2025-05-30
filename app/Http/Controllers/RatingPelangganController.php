@@ -8,12 +8,14 @@ use App\Models\RatingPelangganModel;
 class RatingPelangganController extends Controller
 {
     public function index()
-    {
-        $data = [
-            'no' => 1,
-        ];
-        return view('rating_pelanggan', $data);
-    }
+{
+    $data = [
+        'no' => 1,
+        'rating_pelanggan' => RatingPelangganModel::all()
+    ];
+    return view('rating_pelanggan', $data);
+}
+
 
     public function tambah()
     {

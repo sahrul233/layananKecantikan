@@ -2,23 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Pelanggan extends Authenticatable
+class Pelanggan extends Model
 {
     use Notifiable;
 
     protected $fillable = [
-        'nama',
+        'nama_lengkap',
+        'no_hp',
         'email',
-        'telepon',
         'alamat',
-        'password',
+        'umur',
+        'jenis_kelamin',
+        'karyawan_id',
+        'tempat',
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function karyawan()
+    {
+        return $this->belongsTo(Karyawan::class);
+    }
 }

@@ -7,57 +7,67 @@ use App\Models\LayananAdminModel;
 
 class LayananAdminController extends Controller
 {
+
+
     public function index()
     {
-        $data = [
-            'no' => 1,
-        ];
-        return view('layanan_admin', $data);
+        $layanan = LayananAdminModel::all();
+        return view('layanan.data_layanan', compact('layanan'));
     }
 
     public function tambah()
     {
-        return view('layanan_admin-tambah'); // perbaikan nama view
+        return view('data_layanan.tambah');
     }
 
-    public function action_tambah(Request $request)
+    public function simpan(Request $request)
     {
-        $layanan_admin = new LayananAdminModel(); // konsisten dengan model yang digunakan
-        $layanan_admin->nama = $request->nama;
-        $layanan_admin->deskripsi = $request->deskripsi;
-        $layanan_admin->harga = $request->harga;
-        $layanan_admin->gambar = $request->gambar;
+        // Validasi data
+        $validated = $request->validate([
+            'nama_layanan' => 'required|string|max:255',
+            'kategori' => 'required|string|max:255',
+            'durasi' => 'required|string|max:255',
+            'harga' => 'required|string|max:255',
+        ]);
 
-        $layanan_admin->save();
-        return redirect('/layanan_admin')->with('success', 'layanan berhasil ditambah.');
+        // Simpan data ke database
+        LayananAdminModel::create($validated);
+
+        return redirect('/layanan/data_layanan')->with('success', 'Data layanan berhasil disimpan.');
     }
 
     public function edit($id)
     {
-        $data = [
-            'detail' => LayananAdminModel::findOrFail($id)
-        ];
-        return view('layanan_admin-edit', $data);
+        $layanan = LayananAdminModel::findOrFail($id);
+        return view('layanan.edit', compact('layanan'));
     }
 
-    public function action_edit($id, Request $request)
+    public function update(Request $request, $id)
     {
-        $layanan_admin = LayananAdminModel::findOrFail($id);
-        $layanan_admin->update([
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
-            'harga' => $request->harga,
-            'gambar' => $request->gambar,
+        $request->validate([
+            'nama_layanan' => 'required|string|max:255',
+            'kategori' => 'required|string|max:255',
+            'durasi' => 'required|string|max:255',
+            'harga' => 'required|string|max:255',
         ]);
-        return redirect('/layanan_admin')->with('success', 'layanan berhasil diedit.');
+
+        $layanan = LayananAdminModel::findOrFail($id);
+        $layanan->update([
+            'nama_layanan' => $request->nama_layanan,
+            'kategori' => $request->kategori,
+            'durasi' => $request->durasi,
+            'harga' => $request->harga,
+        ]);
+
+        return redirect('/layanan/data_layanan')->with('success', 'Data berhasil diperbarui.');
     }
 
-    public function hapus($id)
+    public function destroy($id)
     {
-        $layanan_admin = LayananAdminModel::findOrFail($id);
-        $layanan_admin->delete();
+        $layanan = LayananAdminModel::findOrFail($id);
+        $layanan->delete();
 
-        return back()->with('success', 'layanan berhasil dihapus.');
+        return redirect('/layanan/data_layanan')->with('success', 'Data berhasil dihapus.');
     }
 }
 

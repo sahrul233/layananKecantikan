@@ -10,9 +10,9 @@ use App\Models\User;
 
 class RegisterController extends Controller
 {
-   public function create()
+    public function create()
     {
-        return view('auth.register'); // Tampilkan halaman registrasi
+        return view('auth.register');
     }
 
     public function store(Request $request)
@@ -20,27 +20,27 @@ class RegisterController extends Controller
         // Validasi input
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email', // Sesuaikan nama tabel
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'phone' => 'required|string|max:20',
+            'gender' => 'required|in:Laki-laki,Perempuan',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Kembali dengan error jika validasi gagal
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        // Buat pengguna baru
-        $user = new User(); // Gunakan model User
+        // Simpan ke database
+        $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password); // Hash password sebelum disimpan
-
-        // Simpan data ke database
+        $user->phone = $request->phone;
+        $user->gender = $request->gender;
+        $user->password = Hash::make($request->password);
         $user->save();
 
-        // Redirect dengan pesan sukses
         return redirect()->route('login')->with('success', 'Akun berhasil dibuat. Silakan login.');
     }
 }

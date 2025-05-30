@@ -75,23 +75,23 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/data_karyawan" class="collapsed">
+                            <a href="/karyawan/data_karyawan" class="collapsed">
                                 <i class="fas fa-briefcase"></i>
                                 <p>Data Karyawan</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="/data_pelanggan" class="collapsed">
+                            <a href="/pelanggan/data_pelanggan" class="collapsed">
                                 <i class="fas fa-users"></i>
                                 <p>Data Pelanggan</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="/data_produk" class="collapsed">
+                            <a href="/layanan_admin/data_layanan" class="collapsed">
                                 <i class="fas fa-user"></i>
-                                <p>Data Produk</p>
+                                <p>Data Layanan</p>
                             </a>
                         </li>
 
@@ -123,7 +123,7 @@
                             </a>
                         </li>
 
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a href="/users" class="collapsed">
                                 <i class="fas fa-wallet"></i>
                                 <p>DataUsers</p>

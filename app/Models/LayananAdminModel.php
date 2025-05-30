@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class LayananAdminModel extends Model
 {
-    protected $table = 'layanan_admin';
+    protected $table = 'layanans';
+
+    protected $fillable = [
+        'nama_layanan',
+        'kategori',
+        'durasi',
+        'harga',
+    ];
 }
