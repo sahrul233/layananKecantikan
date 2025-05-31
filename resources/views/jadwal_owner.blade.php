@@ -33,25 +33,28 @@
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
+                 <tbody>
+                    @forelse($data_jadwal as $index => $item)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $item->pelanggan->nama_lengkap }}</td>
+                        <td>{{ $item->jadwalAdmin->tanggal }}</td>
+                        <td>{{ $item->jadwalAdmin->jam }}</td>
+                        <td>{{ $item->karyawan->nama }}</td>
+                        <td>{{ $item->tempat }}</td>
+                        <td>{{ $item->status }}</td>
                         <td>
-                            <form>
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Batalkan jadwal ini?')">Batal</button>
+                            <form action="{{ route('jadwal-pelanggan.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Batalkan jadwal ini?')">
+                                @csrf @method('DELETE')
+                                <button class="btn btn-sm btn-danger">Batal</button>
                             </form>
                         </td>
                     </tr>
+                    @empty
                     <tr>
-                        <td colspan="6" class="text-center">Belum ada jadwal reservasi.</td>
+                        <td colspan="8" class="text-center">Belum ada jadwal.</td>
                     </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

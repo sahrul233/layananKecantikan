@@ -13,32 +13,38 @@
         </div>
         <div class="card-body">
             <div class="container-fluid mt-6">
-                <table class="table table-hover">
+                <table class="table table-hover table-bordered">
                     <thead class="table-light">
                         <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama Lengkap</th>
-                            <th scope="col">Nomor HP</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Alamat</th>
-                            <th scope="col">Tempat</th>
-                            <th scope="col">Layanan</th>
-                            <th scope="col">Aksi</th>
+                            <th>No</th>
+                            <th>Nama Lengkap</th>
+                            <th>Nomor HP</th>
+                            <th>Email</th>
+                            <th>Alamat</th>
+                            <th>Umur</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Karyawan</th>
+                            <th>Tempat</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse ($data_pelanggan as $index => $item)
                             <tr>
-                                <th ></th>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td>
-                                    <a href="/data_pelanggan/hapus" class="btn btn-danger btn-sm">Hapus</a>
-                                </td>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $item->nama_lengkap }}</td>
+                                <td>{{ $item->no_hp }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->alamat }}</td>
+                                <td>{{ $item->umur }}</td>
+                                <td>{{ $item->jenis_kelamin }}</td>
+                                <td>{{ $item->karyawan->nama ?? '-' }}</td> {{-- nama karyawan via relasi --}}
+                                <td>{{ $item->tempat }}</td>
                             </tr>
+                        @empty
+                            <tr>
+                                <td colspan="10" class="text-center">Belum ada data pelanggan.</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

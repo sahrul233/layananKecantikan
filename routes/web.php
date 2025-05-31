@@ -142,7 +142,8 @@ Route::get('/pelanggan_karyawan', [PelangganKaryawanController::class, 'index'])
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/pembayaran_pelanggan', [PembayaranPelangganController::class, 'index'])->name('pembayaran_pelanggan.index');
+Route::get('/layanan', [PembayaranPelangganController::class, 'listLayanan'])->name('layanan.list');
+Route::get('/pembayaran_pelanggan/{id}', [PembayaranPelangganController::class, 'index'])->name('pembayaran_pelanggan.index');
 Route::post('/pembayaran_pelanggan', [PembayaranPelangganController::class, 'processPayment'])->name('pembayaran_pelanggan.process');
 
 Route::get('/pembayaran_admin', [PembayaranAdminController::class, 'index'])->name('pembayaran_admin.index');
@@ -154,3 +155,11 @@ Route::get('/riwayatpembayaran/{id}/detail', [RiwayatPembayaranPelangganControll
 
 Route::get('/pembayaran_owner', [PembayaranOwnerController::class, 'index'])->name('pembayaran_owner.index');
 Route::get('/pembayaran_owner/{id}/detail', [PembayaranOwnerController::class, 'show'])->name('pembayaran_owner.detail');
+
+Route::get('/jadwal_admin', [JadwalAdminController::class, 'index'])->name('jadwal_admin.index');
+Route::get('/jadwal_admin/tambah', [JadwalAdminController::class, 'create'])->name('jadwal_admin.create');
+Route::post('/jadwal_admin', [JadwalAdminController::class, 'store'])->name('jadwal_admin.store');
+Route::delete('/jadwal_admin/{id}', [JadwalAdminController::class, 'destroy'])->name('jadwal_admin.destroy');
+
+Route::get('/jadwal_pelanggan', [JadwalPelangganController::class, 'index'])->name('jadwal_pelanggan.index');
+Route::delete('/jadwal_pelanggan/{id}', [JadwalPelangganController::class, 'destroy'])->name('jadwal_pelanggan.destroy');

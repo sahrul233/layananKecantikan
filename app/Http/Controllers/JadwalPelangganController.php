@@ -9,10 +9,15 @@ class JadwalPelangganController extends Controller
 {
     public function index()
     {
-        $data = [
-            'no' => 1,
-        ];
+        $jadwal = JadwalPelangganModel::with(['pelanggan', 'jadwalAdmin', 'karyawan'])->get();
+        return view('jadwal_pelanggan', compact('jadwal'));
+    }
 
-        return view('jadwal_pelanggan', $data);
+    public function destroy($id)
+    {
+        $jadwal = JadwalPelangganModel::findOrFail($id);
+        $jadwal->delete();
+
+        return redirect()->route('jadwal_pelanggan')->with('success', 'Jadwal berhasil dibatalkan.');
     }
 }

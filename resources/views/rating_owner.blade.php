@@ -21,21 +21,19 @@
                             <th scope="col">Rating</th>
                             <th scope="col">Ulasan</th>
                             <th scope="col">Tanggal</th>
-                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                            <tr>
-                                <th ></th>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td>
-                                    <a href="/rating_ulasan/hapus" class="btn btn-danger btn-sm">Hapus</a>
-                                </td>
-                            </tr>
-                    </tbody>
+                    @foreach ($rating as $item)
+                    <tr>
+                        <th>{{ $no++ }}</th>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->rating }}</td>
+                        <td>{{ $item->ulasan }}</td>
+                        <td>{{ $item->tanggal }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
                 </table>
             </div>
         </div>

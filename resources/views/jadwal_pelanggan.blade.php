@@ -1,11 +1,9 @@
 @extends('layout.template_pelanggan')
 
 @section('content')
-<div class="cand">
-    <div class="card-header">
-        <h4 class="text-center">JADWAL</h4>
-    </div>
-     <style>
+<div class="container mt-4">
+    <h4 class="text-center mb-3">Jadwal Anda</h4>
+    <style>
     .table td, .table th {
     vertical-align: middle;
     }
@@ -19,43 +17,42 @@
     margin-bottom: 20px;
     }
     </style>
-    <div class="card-body">
-        <div class="container-fluid mt-4">
-            <table class="table table-bordered table-hover">
-                <thead class="table-primary">
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Pelanggan</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Jam</th>
-                        <th scope="col">Nama Karyawan</th>
-                        <th scope="col">Tempat</th>
-                        <th scope="col">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="/" class="btn btn-sm btn-primary">Edit</a>
-                            <form>
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Batalkan jadwal ini?')">Batal</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6" class="text-center">Belum ada jadwal reservasi.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <table class="table table-bordered">
+        <thead class="table-primary">
+            <tr>
+                <th>No</th>
+                <th>Nama Pelanggan</th>
+                <th>Tanggal</th>
+                <th>Jam</th>
+                <th>Nama Karyawan</th>
+                <th>Tempat</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($jadwal as $index => $item)
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $item->pelanggan->nama_lengkap }}</td>
+                <td>{{ $item->jadwalAdmin->tanggal }}</td>
+                <td>{{ $item->jadwalAdmin->jam }}</td>
+                <td>{{ $item->karyawan->nama }}</td>
+                <td>{{ $item->tempat }}</td>
+                <td>{{ $item->status }}</td>
+                <td>
+                    <form action="{{ route('jadwal-pelanggan.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Batalkan jadwal ini?')">
+                        @csrf @method('DELETE')
+                        <button class="btn btn-sm btn-danger">Batal</button>
+                    </form>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="8" class="text-center">Belum ada jadwal.</td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
 </div>
 @endsection
