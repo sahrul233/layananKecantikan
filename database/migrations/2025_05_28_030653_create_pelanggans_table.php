@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('umur');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->foreignId('karyawan_id')->constrained('karyawans')->onDelete('cascade');
+            $table->foreignId('data_layanan_id')->constrained('data_layanans')->onDelete('cascade'); // Tambahan
             $table->enum('tempat', ['Rumah', 'Salon']);
             $table->timestamps();
         });

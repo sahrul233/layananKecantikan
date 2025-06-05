@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Pelanggan;
 class PelangganKaryawanController extends Controller
 {
     public function index()
     {
-        $data = [
-            'no' => 1,
-        ];
-
-        return view('pelanggan_karyawan', $data);
+        $pelanggan = Pelanggan::with('karyawan')->get();
+    return view('pelanggan_karyawan', compact('pelanggan'));
     }
 }

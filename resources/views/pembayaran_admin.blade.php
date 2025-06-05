@@ -32,7 +32,7 @@
                                 <td> </td>
                                 <td> </td>
                                 <td>
-                                    <a href="/pembayaran_admin/detail" class="btn btn-primary btn-sm">Detail</a>
+
                                 </td>
                             </tr>
                     </tbody>

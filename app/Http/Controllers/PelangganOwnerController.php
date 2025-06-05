@@ -6,11 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Pelanggan;
 class PelangganOwnerController extends Controller
 {
-     public function index(){
-    $data = [
-        'no' => 1,
-        'data_pelanggan' => Pelanggan::all()
-    ];
-    return view('pelanggan_owner', $data);
+    public function index()
+    {
+    $pelanggan = Pelanggan::with('karyawan')->get();
+    return view('pelanggan_owner', compact('pelanggan'));
     }
 }

@@ -9,14 +9,14 @@ class LayananPelanggan extends Model
     protected $table = 'layanan_pelanggan';
 
     protected $fillable = [
-        'pelanggan_id',
-        'layanan_id',
+        'pelanggans_id',
+        'layanans_id',
     ];
 
     // Relasi ke layanan
     public function layanan()
     {
-        return $this->belongsTo(DataLayanan::class, 'layanan_id');
+        return $this->belongsTo(DataLayanan::class, 'layanans_id');
     }
 }
 

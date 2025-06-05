@@ -19,6 +19,5 @@ class DashboardAdminController extends Controller
             'jumlahpelanggan' => $jumlahpelanggan,
             'jumlahlayanan' => $jumlahlayanan,
     ]);
-
     }
 }

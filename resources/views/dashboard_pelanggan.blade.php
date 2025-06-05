@@ -14,13 +14,10 @@
             <div class="card card-stats card-round">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-icon">
-                            <img src="{{ asset('images/facial-wajah.jpg') }}" alt="Facial" width="50" class="rounded-circle shadow-sm">
-                        </div>
                         <div class="col col-stats ms-3 ms-sm-0">
                             <div class="numbers">
                                 <p class="card-category">Facial Treatment</p>
-                                <h4 class="card-title">1,294 pelanggan</h4>
+                                <h4 class="card-title">0 pelanggan</h4>
                             </div>
                         </div>
                     </div>
@@ -33,13 +30,10 @@
             <div class="card card-stats card-round">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-icon">
-                            <img src="{{ asset('images/hair-spa.jpg') }}" alt="Hair Spa" width="50" class="rounded-circle shadow-sm">
-                        </div>
                         <div class="col col-stats ms-3 ms-sm-0">
                             <div class="numbers">
                                 <p class="card-category">Hair Spa</p>
-                                <h4 class="card-title">854 pelanggan</h4>
+                                <h4 class="card-title">0 pelanggan</h4>
                             </div>
                         </div>
                     </div>
@@ -52,13 +46,10 @@
             <div class="card card-stats card-round">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-icon">
-                            <img src="{{ asset('images/manicure.jpg') }}" alt="Manicure" width="50" class="rounded-circle shadow-sm">
-                        </div>
                         <div class="col col-stats ms-3 ms-sm-0">
                             <div class="numbers">
                                 <p class="card-category">Manicure & Pedicure</p>
-                                <h4 class="card-title">692 pelanggan</h4>
+                                <h4 class="card-title">0 pelanggan</h4>
                             </div>
                         </div>
                     </div>
@@ -71,13 +62,10 @@
             <div class="card card-stats card-round">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-icon">
-                            <img src="{{ asset('images/eyelash.jpg') }}" alt="Eyelash" width="50" class="rounded-circle shadow-sm">
-                        </div>
                         <div class="col col-stats ms-3 ms-sm-0">
                             <div class="numbers">
                                 <p class="card-category">Eyelash Extension</p>
-                                <h4 class="card-title">430 pelanggan</h4>
+                                <h4 class="card-title">0 pelanggan</h4>
                             </div>
                         </div>
                     </div>

@@ -9,8 +9,10 @@ class PembayaranPelangganModel extends Model
 {
     use HasFactory;
 
+    protected $table = 'pembayaran_pelanggan_models';
+
     protected $fillable = [
-        'layanan_id',
+        'layanans_id',
         'metode_pembayaran',
         'catatan',
         'total_harga',
@@ -18,6 +20,6 @@ class PembayaranPelangganModel extends Model
 
     public function layanan()
     {
-        return $this->belongsTo(DataLayanan::class, 'layanan_id');
+        return $this->belongsTo(DataLayanan::class, 'layanans_id');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layout.template_karyawan')
+@extends('layout.template_admin')
 
 @section('content')
 <div class="container mt-4">
@@ -7,6 +7,9 @@
             <h4>Data Pelanggan</h4>
         </div>
         <div class="card-body">
+            <div class="mb-3">
+                <a href="{{ url('/pelanggan/tambah') }}" class="btn btn-primary">Tambah Data</a>
+            </div>
             <div class="table-responsive">
                 <table class="table table-hover table-bordered">
                     <thead class="table-light">

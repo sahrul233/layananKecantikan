@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rating_pelanggan', function (Blueprint $table) {
+        Schema::create('data_layanans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('rating'); // 1–5
-            $table->text('ulasan');
-            $table->date('tanggal');
+            $table->text('deskripsi')->nullable();
+            $table->bigInteger('harga');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rating_pelanggan');
+        Schema::dropIfExists('data_layanans');
     }
 };

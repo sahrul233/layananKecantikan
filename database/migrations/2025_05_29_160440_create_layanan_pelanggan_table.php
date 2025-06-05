@@ -10,8 +10,8 @@ class CreateLayananPelangganTable extends Migration
     {
         Schema::create('layanan_pelanggan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pelanggan_id');
-            $table->unsignedBigInteger('layanan_id');
+            $table->unsignedBigInteger('pelanggans_id');
+            $table->unsignedBigInteger('layanans_id');
             $table->timestamps();
         });
     }

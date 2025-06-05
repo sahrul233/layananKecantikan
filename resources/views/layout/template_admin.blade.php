@@ -82,7 +82,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/pelanggan/data_pelanggan" class="collapsed">
+                            <a href="/pelanggan_admin" class="collapsed">
                                 <i class="fas fa-users"></i>
                                 <p>Data Pelanggan</p>
                             </a>
@@ -113,20 +113,6 @@
                             <a href="/pembayaran_admin" class="collapsed">
                                 <i class="fas fa-wallet"></i>
                                 <p>Data Pembayaran</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/layanan_admin" class="collapsed">
-                                <i class="fas fa-wallet"></i>
-                                <p>Data Layanan Pelanggan</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/users" class="collapsed">
-                                <i class="fas fa-wallet"></i>
-                                <p>DataUsers</p>
                             </a>
                         </li>
                     </ul>
@@ -161,8 +147,6 @@
                 <!-- Navbar Header -->
                 <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
                     <div class="container-fluid">
-
-
                         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
                             <li class="nav-item topbar-user dropdown hidden-caret">
                                 <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"

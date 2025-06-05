@@ -9,7 +9,7 @@ class PembayaranOwnerModel extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'layanan_id', // ID layanan yang dibayar
+        'layanans_id', // ID layanan yang dibayar
         'metode_pembayaran',
         'catatan',
         'total_harga',
@@ -17,6 +17,6 @@ class PembayaranOwnerModel extends Model
     ];
     public function layanan()
     {
-        return $this->belongsTo(LayananAdminModel::class, 'layanan_id');
+        return $this->belongsTo(LayananAdminModel::class, 'layanans_id');
     }
 }

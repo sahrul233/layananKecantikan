@@ -9,20 +9,20 @@
             <h5>Detail Layanan</h5>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ $layanan->nama }}
-                    <span>Rp {{ number_format($layanan->harga, 0, ',', '.') }}</span>
+                    Nama Layanan
+                    <span>Rp </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
                     Total
-                    <span>Rp {{ number_format($layanan->harga, 0, ',', '.') }}</span>
+                    <span>Rp </span>
                 </li>
             </ul>
         </div>
 
-        <form action="{{ route('pembayaran_pelanggan.process') }}" method="POST">
+        <form action="" method="POST">
             @csrf
-            <input type="hidden" name="layanan_id" value="{{ $layanan->id }}">
-            <input type="hidden" name="total_harga" value="{{ $layanan->harga }}">
+            <input type="hidden" name="layanan_id" value="">
+            <input type="hidden" name="total_harga" value="">
 
             <div class="mb-3 mt-4">
                 <label for="metode_pembayaran" class="form-label">Pilih Metode Pembayaran</label>
@@ -39,7 +39,7 @@
             </div>
 
             <div class="d-flex justify-content-between">
-                <a href="{{ route('layanan.list') }}" class="btn btn-secondary">Kembali</a>
+                <a href="" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary">Konfirmasi Pembayaran</button>
             </div>
         </form>

@@ -23,6 +23,7 @@
                             <th>Jenis Kelamin</th>
                             <th>Karyawan</th>
                             <th>Tempat</th>
+                            <th>Layanan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -36,8 +37,15 @@
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->umur }}</td>
                                 <td>{{ $item->jenis_kelamin }}</td>
-                                <td>{{ $item->karyawan->nama ?? '-' }}</td> {{-- nama karyawan via relasi --}}
+                                <td>{{ $item->karyawan->nama ?? '-' }}</td>
                                 <td>{{ $item->tempat }}</td>
+                                <td>
+                                    @if($item->layanan)
+                                        {{ $item->layanan->nama }}
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ url('/pelanggan/edit/' . $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                     <form action="{{ url('/pelanggan/hapus/' . $item->id) }}" method="POST"
@@ -50,7 +58,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="10" class="text-center">Belum ada data pelanggan.</td>
+                                <td colspan="11" class="text-center">Belum ada data pelanggan.</td>
                             </tr>
                         @endforelse
                     </tbody>

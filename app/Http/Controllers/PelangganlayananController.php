@@ -20,8 +20,8 @@ class PelangganlayananController extends Controller
     $pelangganId = auth()->id() ?? 1;
 
     LayananPelanggan::create([
-        'pelanggan_id' => $pelangganId,
-        'layanan_id' => $layanan_id,
+        'pelanggans_id' => $pelangganId,
+        'layanans_id' => $layanan_id,
     ]);
 
     return redirect('/pelanggan/data_pelanggan')->with('success', 'Layanan berhasil dipesan.');
@@ -33,7 +33,4 @@ public function riwayat()
     $pesanan = LayananPelanggan::with('layanan')->where('pelanggan_id', $pelangganId)->get();
     return view('pelanggan_layanan.riwayat', compact('pesanan'));
 }
-
-
-
 }

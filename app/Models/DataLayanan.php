@@ -9,7 +9,7 @@ class DataLayanan extends Model
 {
     use HasFactory;
 
-    protected $table = 'data_layanan'; // nama tabel di database
+    protected $table = 'data_layanans'; // nama tabel di database
 
     protected $fillable = [
         'nama',

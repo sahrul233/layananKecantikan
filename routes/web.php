@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardKaryawanController;
 use App\Http\Controllers\DashboardPelangganController;
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Auth\LoginAdminController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -47,9 +48,13 @@ Route::get('/dashboard_pelanggan', [DashboardPelangganController::class, 'index'
 Route::get('/register_admin', [RegisterController::class, 'index'])->name('register.form');
 Route::post('/register_admin', [RegisterController::class, 'store']);
 
-// Route::get('/login_admin', [LoginAdminController::class, 'index'])->name('login_admin');
-// Route::post('/login_admin', [LoginAdminController::class, 'login_proses'])->name('login.process');
-// Route::post('/logout_admin', [LoginAdminController::class, 'logout'])->name('logout');
+Route::get('/login_admin', [LoginAdminController::class, 'index'])->name('login_admin');
+Route::post('/login_admin', [LoginAdminController::class, 'login_proses'])->name('login.process');
+Route::post('/logout', [LoginAdminController::class, 'logout'])->name('logout');
+
+// Route::middleware(['auth', 'role:admin'])->get('/dashboard_admin', [DashboardAdminController::class, 'admin'])->name('dashboard_admin');
+// Route::middleware(['auth', 'role:owner'])->get('/dashboard_owner', [DashboardOwnerController::class, 'owner'])->name('dashboard_owner');
+// Route::middleware(['auth', 'role:karyawan'])->get('/dashboard_karyawan', [DashboardKaryawanController::class, 'karyawan'])->name('dashboard_karyawan');
 
 Route::get('/register', [LoginController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [LoginController::class, 'register']);
@@ -64,6 +69,7 @@ Route::middleware('auth')->group(function () {
         return view('dashboard_pelanggan');
     });
 });
+Route::get('/pelanggan_admin', [AdminPelangganController::class, 'index']);
 
 Route::get('/karyawan/data_karyawan', [KaryawanController::class, 'index']);
 Route::get('/karyawan/tambah', [KaryawanController::class, 'tambah']);
@@ -142,11 +148,11 @@ Route::get('/pelanggan_karyawan', [PelangganKaryawanController::class, 'index'])
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/layanan', [PembayaranPelangganController::class, 'listLayanan'])->name('layanan.list');
-Route::get('/pembayaran_pelanggan/{id}', [PembayaranPelangganController::class, 'index'])->name('pembayaran_pelanggan.index');
-Route::post('/pembayaran_pelanggan', [PembayaranPelangganController::class, 'processPayment'])->name('pembayaran_pelanggan.process');
-
-Route::get('/pembayaran_admin', [PembayaranAdminController::class, 'index'])->name('pembayaran_admin.index');
+// Route::get('/layanan_pelanggan', [PembayaranPelangganController::class, 'listLayanan'])->name('layanan.list');
+// Route::get('/pembayaran_pelanggan', [PembayaranPelangganController::class, 'index'])->name('pembayaran_pelanggan.index');
+// Route::post('/pembayaran_pelanggan', [PembayaranPelangganController::class, 'processPayment'])->name('pembayaran_pelanggan.process');
+Route::get('/pembayaran_pelanggan', [PembayaranPelangganController::class, 'index'])->name('pembayaran_admin.index');
+Route::get('/pembayaran_admin', [PembayaranAdminController::class, 'index'])->name('pembayaran_pelanggan.index');
 Route::get('/pembayaran_admin/{id}/detail', [PembayaranAdminController::class, 'show'])->name('pembayaran_admin.detail');
 Route::post('/pembayaran_admin/{id}/status', [PembayaranAdminController::class, 'updateStatus'])->name('admin.pembayaran.updateStatus');
 

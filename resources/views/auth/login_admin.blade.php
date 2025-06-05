@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login Admin/Owner/Karyawan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -23,43 +22,40 @@
         }
     </style>
 </head>
-<body>
-    <div class="login-form">
-        <h2 class="text-center mb-4">Login</h2>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="width: 400px;">
+        <h4 class="text-center mb-4">Login </h4>
 
-        <!-- Menampilkan pesan error jika ada -->
-        @if (session('failed'))
-            <div class="alert alert-danger">
-                {{ session('failed') }}
-            </div>
+        @if(session('failed'))
+            <div class="alert alert-danger">{{ session('failed') }}</div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login.process') }}">
             @csrf
             <div class="mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autofocus>
-                @error('email')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" required value="{{ old('email') }}">
+                @error('email') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
+
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" required>
-                @error('password')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+                @error('password') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
-            <div class="form-group">
-                <label for="role">Role</label>
-                <select class="form-control" id="role" name="role" required>
-                    <option value="" disabled selected>Pilih role</option>
+
+            <div class="mb-3">
+                <label>Role</label>
+                <select name="role" class="form-control" required>
+                    <option value="" disabled selected>Pilih Role</option>
                     <option value="admin">Admin</option>
-                    <option value="karyawan">Karyawan</option>
                     <option value="owner">Owner</option>
+                    <option value="karyawan">Karyawan</option>
                 </select>
-           </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
+                @error('role') <small class="text-danger">{{ $message }}</small> @enderror
+            </div>
+
+            <button class="btn btn-primary w-100">Login</button>
         </form>
     </div>
 </body>

@@ -63,6 +63,18 @@
             </select>
         </div>
 
+        <div class="mb-3">
+            <label for="data_layanan_id" class="form-label">Layanan</label>
+            <select class="form-control" id="data_layanan_id" name="data_layanan_id" required>
+                <option value="" disabled selected>-- Pilih Layanan --</option>
+                @foreach($layanans as $layanan)
+                    <option value="{{ $layanan->id }}" {{ old('data_layanan_id') == $layanan->id ? 'selected' : '' }}>
+                        {{ $layanan->nama }} (Rp {{ number_format($layanan->harga, 0, ',', '.') }})
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-success">Simpan</button>
         <a href="{{ url('/pelanggan/data_pelanggan') }}" class="btn btn-secondary">Kembali</a>
     </form>
